@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI based Personalized Learning and Career Recommendation</title>
+    <meta name="description" content="Discover your ideal career path with our AI-powered recommendation system. Get personalized career suggestions based on your skills, interests, and preferences.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="dark-mode">
+   <nav class="app-navbar">
+    <div class="nav-left">
+        <img src="./assets/logo.png" class="nav-logo" alt="CareerCraft Logo">
+        <span class="brand-title">CareerCraft</span>
+    </div>
+<div class="nav-center"></div>
+
+    <div class="nav-right">
+        <a id="nav-home" href="#" data-nav="home">Home</a>
+        <a id="nav-compare" href="#" data-nav="compare">Compare</a>
+        <a id="nav-results" href="#" data-nav="results">Results</a>
+        <button id="theme-toggle">
+   <i class="fas fa-moon"></i>
+</button>
+        <div class="nav-session" id="nav-session">
+        <img src="./assets/user.png" class="nav-profile-icon" alt="User Profile">
+    </div>
+
+    <!-- SESSION SIDEBAR -->
+<div id="session-sidebar" class="session-sidebar">
+  <div class="session-header">
+    <h3>Session Info</h3>
+  </div>
+
+  <div id="session-content" class="session-content">
+    <!-- session data injected here -->
+  </div>
+</div>
+
+</div>
+</nav>
+  <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="container hero-content">
+            <h1>AI based Personalized Learning and Career Recommendation</h1>
+            <p class="hero-tagline">Discover your ideal career path with intelligent AI analysis. We analyze your unique profile to find perfect career matches.</p>
+        </div>
+    </header>
+
+    <!-- Step Indicator -->
+    <div class="container">
+        <div class="step-indicator">
+            <div class="step active" data-step="1">
+                <div class="step-circle">
+                    <i class="fas fa-user"></i>
+                </div>
+                <span class="step-label">Personal Info</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="2">
+                <div class="step-circle">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <span class="step-label">Interests & Skills</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="3">
+                <div class="step-circle">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <span class="step-label">Preferences</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="4">
+                <div class="step-circle">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <span class="step-label">Results</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container app-container">
+        <!-- Step 1: Personal Information -->
+        <section class="card glass-card" id="step-1">
+            <h2 class="card-title"><i class="fas fa-user-circle"></i> Personal Information</h2>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" class="futuristic-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="education">Education Level</label>
+                <select id="education" class="futuristic-input">
+                    <option value="">Select your education level</option>
+                    <option value="highschool">High School</option>
+                    <option value="associate">Associate Degree</option>
+                    <option value="bachelor">Bachelor's Degree</option>
+                    <option value="master">Master's Degree</option>
+                    <option value="phd">PhD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="experience">Years of Experience</label>
+                <select id="experience" class="futuristic-input">
+                    <option value="">Select years of experience</option>
+                    <option value="0">0-1 years</option>
+                    <option value="1">1-3 years</option>
+                    <option value="3">3-5 years</option>
+                    <option value="5">5-10 years</option>
+                    <option value="10">10+ years</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fieldOfStudy">Field of Study</label>
+                <select id="fieldOfStudy" class="futuristic-input">
+                    <option value="">Select field</option>
+                    <option value="computer">Computer / IT</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="civil">Civil</option>
+                    <option value="arts">Arts</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="science">Science</option>
+                    <option value="media">Media / Film</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fieldDetails">Field Details (Optional)</label>
+                <input type="text" id="fieldDetails" class="futuristic-input" placeholder="e.g. Computer Engineering, Filmmaking">
+            </div>
+            <button class="btn btn-next" onclick="goToStep(2)">
+                Continue <i class="fas fa-arrow-right"></i>
+            </button>
+        </section>
+
+        <!-- Step 2: Interests & Skills -->
+        <section class="card glass-card hidden" id="step-2">
+            <h2 class="card-title"><i class="fas fa-lightbulb"></i> Interests & Skills</h2>
+            <div class="form-group">
+                <label>Select your interests (choose 3-5)</label>
+                <div class="skills-container" id="interests-container">
+                    <!-- Interests will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Select your skills (choose 3-5)</label>
+                <div class="skills-container" id="skills-container">
+                    <!-- Skills will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="additional-info">Additional Information (Optional)</label>
+                <textarea id="additionalInfo" class="futuristic-input" rows="3" placeholder="Tell us more about your career goals, preferences, or any other relevant information"></textarea>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-outline" onclick="goToStep(1)">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="btn btn-next" onclick="goToStep(3)">
+                    Continue <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Step 3: Career Preferences -->
+        <section class="card glass-card hidden" id="step-3">
+            <h2 class="card-title"><i class="fas fa-bullseye"></i> Career Preferences</h2>
+            <div class="form-group">
+                <label for="work-environment">Preferred Work Environment</label>
+                <select id="work-environment" class="futuristic-input">
+                    <option value="">Select preferred work environment</option>
+                    <option value="office">Office</option>
+                    <option value="remote">Remote</option>
+                    <option value="hybrid">Hybrid</option>
+                    <option value="field">Field Work</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="salary-expectation">Salary Expectation</label>
+                <select id="salary-expectation" class="futuristic-input">
+                    <option value="">Select salary expectation</option>
+                    <option value="entry">Entry Level (₹30,000 - ₹50,000)</option>
+                    <option value="mid">Mid Level (₹50,000 - ₹80,000)</option>
+                    <option value="senior">Senior Level (₹80,000 - ₹1,20,000)</option>
+                    <option value="executive">Executive Level (₹1,20,000+)</option>
+                </select>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-outline" onclick="goToStep(2)">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="btn glow-button" id="recommend-btn">
+                    <i class="fas fa-magic"></i> Get Career Recommendations
+                </button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>Our AI is analyzing your profile and finding the best career matches...</p>
+        </div>
+
+        <!-- Step 4: Results -->
+        <section class="card glass-card results-container" id="results-container">
+            <h2 class="card-title"><i class="fas fa-chart-line"></i> Recommended Career Paths</h2>
+            <div id="career-results">
+
+                <!-- Career results will be populated by JavaScript -->
+            </div>
+            <div class="card hidden" id="course-section">
+            <h2 class="card-title">
+             <i class="fas fa-book"></i> Recommended Courses
+            </h2>
+           <div id="course-results"></div>
+            </div>
+
+            <div class="match-explanation">
+                <h4><i class="fas fa-info-circle"></i> How We Calculate Your Match</h4>
+                <p>Our AI analyzes multiple factors to determine your career compatibility:</p>
+                <div class="match-factors">
+                    <div class="match-factor"><i class="fas fa-check-circle"></i> Field of study</div>
+                    <div class="match-factor"><i class="fas fa-check-circle"></i> Interest compatibility</div>
+                    <div class="match-factor"><i class="fas fa-check-circle"></i> Education requirements</div>
+                    <div class="match-factor"><i class="fas fa-check-circle"></i> Experience level</div>
+                    <div class="match-factor"><i class="fas fa-check-circle"></i> Work environment preference</div>
+                    <div class="match-factor"><i class="fas fa-check-circle"></i> Salary expectations</div>
+                </div>
+            </div>
+            <div class="btn-group center">
+                <button class="btn btn-outline" id="compare-btn">
+                    <i class="fas fa-balance-scale"></i> Compare Careers
+                </button>
+                <button class="btn" id="save-btn">
+                    <i class="fas fa-save"></i> Save Results
+                </button>
+               <button class="btn btn-outline" id="change-career-btn">
+                Change Preferences
+                </button>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section class="card glass-card comparison-container" id="comparison-container">
+            <h2 class="card-title"><i class="fas fa-balance-scale"></i> Career Comparison</h2>
+            <div class="table-wrapper">
+                <table class="comparison-table" id="comparison-table">
+                    <!-- Comparison table will be populated by JavaScript -->
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Feature Highlights -->
+    <section class="container feature-highlight">
+        <article class="feature glass-card">
+            <div class="feature-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3>Smart Analysis</h3>
+            <p>Analyzes user details to recommend suitable career options.</p>
+        </article>
+        <article class="feature glass-card">
+            <div class="feature-icon">
+                <i class="fa-solid fa-chart-area"></i>
+            </div>
+            <h3>Career Match Insights</h3>
+            <p>Get comprehensive information about each recommended career path</p>
+        </article>
+        <article class="feature glass-card">
+            <div class="feature-icon">
+                <i class="fas fa-road"></i>
+            </div>
+            <h3>Career Roadmaps</h3>
+            <p>Shows learning paths and future career growth steps.</p>
+        </article>
+    </section>
+
+    <footer class="container">
+        <p>AI based Personalized Learning and Career Recommendation &copy; 2025 | Empowering your career journey with artificial intelligence</p>
+    </footer>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="./script.js"></script>
+
+    <!-- HOME CONFIRM MODAL -->
+<div id="home-modal" class="cc-modal hidden">
+  <div class="cc-modal-card">
+    <h2>Start New Session?</h2>
+    <p>Your current progress is saved.  
+    You can continue later.</p>
+
+    <div class="cc-modal-actions">
+      <button id="home-cancel" class="btn btn-outline">Stay Here</button>
+      <button id="home-confirm" class="btn">Go Home</button>
+    </div>
+  </div>
+</div>
+
+</body>
+<div id="app-loader">
+  <div id="app-loader">
+    <img src="./assets/logo.gif" class="loader-logo">
+</div>
+
+</div>
+</html>
